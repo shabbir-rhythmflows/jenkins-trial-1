@@ -24,7 +24,10 @@ pipeline {
 				echo "BUILD lol"
 				echo "path right now is: $PATH"
 				echo "Build number now is: $env.BUILD_NUMBER"
+				echo "Job name now is: $env.JOB_NAME"
 				echo "Build iD now is: $env.BUILD_ID"
+				echo "Build Tag now is: $env.BUILD_TAG"
+				echo "Build URL now is: $env.BUILD_URL"
 			}
 		}
 		stage("TEST"){
