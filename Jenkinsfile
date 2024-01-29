@@ -36,13 +36,13 @@ pipeline {
             }
         }
 
-    //     stage("Build Docker Image"){
-    //         steps{
-    //             script{
-    //                 dockerImage = docker.build('shabbirhythm/currency-exchange-devops-lol:${env.BUILD_TAG}')
-    //             }
-    //         }
-    //     }
+        stage("Build Docker Image"){
+            steps{
+                script{
+                    dockerImage = docker.build('shabbirhythm/currency-exchange-lol:${env.BUILD_TAG}')
+                }
+            }
+        }
     //     stage("Push Docker Image"){
     //         steps{
     //             script{
