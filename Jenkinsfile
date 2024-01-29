@@ -9,7 +9,9 @@ pipeline {
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages{
-        stage("Checkout"){}
+        stage("Checkout"){
+            steps{}
+        }
 		stage("Compile"){
 			steps{
                 sh "mvn clean compile"
