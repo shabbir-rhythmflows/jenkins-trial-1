@@ -45,15 +45,15 @@ pipeline {
             }
         }
 
-    //     stage("Push Docker Image"){
-    //         steps{
-    //             script{
-    //                 dockerImage.withRegistry("", "dockerhub");
-    //                 dockerImage.push();
-    //                 dockerImage.push('latest');
-    //             } 
-    //         }
-    //     }
+        stage("Push Docker Image"){
+            steps{
+                script{
+                    dockerImage.withRegistry("", "dockerhub");
+                    dockerImage.push();
+                    dockerImage.push('latest');
+                } 
+            }
+        }
 	}
 	post{
 		always {
