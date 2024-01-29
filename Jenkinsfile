@@ -10,7 +10,9 @@ pipeline {
 	}
 	stages{
         stage("Checkout"){
-            steps{}
+            steps{
+                echo "I am checkout"
+            }
         }
 		stage("Compile"){
 			steps{
