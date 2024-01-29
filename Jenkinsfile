@@ -41,5 +41,8 @@ pipeline {
 		failure {
 			echo "I run when you fail"
 		}
+		changed {
+			echo "Status of build changed! Failure to success or success to failure"
+		}
 	}
 }
