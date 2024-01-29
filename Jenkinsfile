@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
                     imageName = "shabbirhythm/currency-exchange-lol:${env.BUILD_TAG.replaceAll("[^a-zA-Z0-9_.-]", "_")}"
-                    dockerImage = docker.build(imageName)
+                    docker.build(imageName)
                 }
             }
         }
@@ -48,9 +48,10 @@ pipeline {
         stage("Push Docker Image"){
             steps{
                 script{
-                    dockerImage.withRegistry('https://registry.hub.docker.com', "dockerhub");
-                    dockerImage.push();
-                    dockerImage.push('latest');
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        docker.image("shabbirhythm/currency-exchange-lol:${env.BUILD_TAG}").push()
+                        docker.image("shabbirhythm/currency-exchange-lol:${env.BUILD_TAG}").push('latest')
+                    }
                 } 
             }
         }
