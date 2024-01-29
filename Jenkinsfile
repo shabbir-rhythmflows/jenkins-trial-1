@@ -39,7 +39,8 @@ pipeline {
         stage("Build Docker Image") {
             steps {
                 script {
-                    dockerImage = docker.build('shabbirhythm/currency-exchange-lol:${env.BUILD_TAG}')
+                    imageName = "shabbirhythm/currency-exchange-lol:${env.BUILD_TAG.replaceAll("[^a-zA-Z0-9_.-]", "_")}"
+                    dockerImage = docker.build(imageName)
                 }
             }
         }
