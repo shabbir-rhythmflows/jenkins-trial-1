@@ -36,23 +36,23 @@ pipeline {
             }
         }
 
-        stage("Build Docker Image"){
-            steps{
-                script{
-                    dockerImage = docker.build('shabbirhythm/currency-exchange-devops-lol:${env.BUILD_TAG}')
-                }
-            }
-        }
-        stage("Push Docker Image"){
-            steps{
-                script{
-                    dockerImage.withRegistry("", "dockerhub");
-                    dockerImage.push();
-                    dockerImage.push('latest');
-                } 
-            }
-        }
-	}
+    //     stage("Build Docker Image"){
+    //         steps{
+    //             script{
+    //                 dockerImage = docker.build('shabbirhythm/currency-exchange-devops-lol:${env.BUILD_TAG}')
+    //             }
+    //         }
+    //     }
+    //     stage("Push Docker Image"){
+    //         steps{
+    //             script{
+    //                 dockerImage.withRegistry("", "dockerhub");
+    //                 dockerImage.push();
+    //                 dockerImage.push('latest');
+    //             } 
+    //         }
+    //     }
+	// }
 	post{
 		always {
 			echo "I run always & I am awesome"
