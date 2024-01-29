@@ -1,17 +1,3 @@
-// SCRIPTED
-// node {
-// 	stage('Build') {
-// 		echo "Build"
-// 	}
-// 	stage('Test') {
-// 		echo "Test"
-// 	}
-// 	stage('Integration Test') {
-// 		echo "Integration Test"
-// 	}
-// }
-
-// DECLARATIVE
 pipeline {
 	agent any
 	// agent{
@@ -23,27 +9,20 @@ pipeline {
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
 	stages{
-		stage("BUILD"){
+        stage("Checkout"){}
+		stage("Compile"){
 			steps{
-				sh 'mvn --version'
-				sh 'docker --version'
-				echo "BUILD lol"
-				echo "path right now is: $PATH"
-				echo "Build number now is: $env.BUILD_NUMBER"
-				echo "Job name now is: $env.JOB_NAME"
-				echo "Build iD now is: $env.BUILD_ID"
-				echo "Build Tag now is: $env.BUILD_TAG"
-				echo "Build URL now is: $env.BUILD_URL"
+                sh "mvn clean compile"
 			}
 		}
 		stage("TEST"){
 			steps{
-				echo "TEST lol"
+				sh "mvn test"
 			}
 		}
 		stage("Integration Test"){
 			steps{
-				echo "Integration Test lol"
+				echo "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
 	}
