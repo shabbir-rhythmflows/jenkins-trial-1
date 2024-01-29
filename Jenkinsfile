@@ -13,10 +13,14 @@
 
 // DECLARATIVE
 pipeline {
-	agent any
+	// agent any
+	agent{
+		docker{ image{ 'maven' } }
+	}
 	stages{
 		stage("BUILD"){
 			steps{
+				sh 'mvn --version'
 				echo "BUILD lol"
 			}
 		}
