@@ -22,7 +22,7 @@ pipeline {
 			steps{
 				// sh 'mvn --version'
 				echo "BUILD lol"
-				echo "$PATH"
+				echo "path right now is: $PATH"
 				echo "Build number now is: $env.BUILD_NUMBER"
 				echo "Build iD now is: $env.BUILD_ID"
 			}
